@@ -178,10 +178,11 @@ const SalesProof = () => {
                           src={image.image}
                           alt={`Sales Proof ${image.id}`}
                           fill
-                          loading="eager"
-                          quality={90}
+                          priority={index < 3}
+                          loading={index < 3 ? "eager" : "lazy"}
+                          quality={75}
                           className="object-cover transition-transform duration-500 hover:scale-110"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       </div>
                     </motion.div>

@@ -138,9 +138,9 @@ export default function ClientReviewsPage() {
                     src={image.image}
                     alt={`Client Review ${image.id}`}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     loading={index < 8 ? "eager" : "lazy"}
                     quality={75}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </div>
