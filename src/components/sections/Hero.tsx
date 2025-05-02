@@ -38,14 +38,18 @@ export default function Hero() {
     },
     {
       icon: <SiAliexpress className="text-[#FF4747] text-5xl" />,
-      title: "Aliexpress Dropshipping",
-    },
+      title: (
+        <span className="text-xs">
+          Aliexpress Dropshipping
+        </span>
+      ),
+    },    
     {
       icon: <img src="/Hero Carousel List/zambeel.png" alt="Zambeel" className="h-12 w-auto" />,
       title: "Zambeel",
     },
     {
-      icon: <img src="/Hero Carousel List/markaz.png" alt="Markaz" className="h-12 w-auto" />,
+      icon: <img src="/Hero Carousel List/Markaz.png" alt="Markaz" className="h-12 w-auto" />,
       title: "Markaz",
     },
   ];
