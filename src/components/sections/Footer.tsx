@@ -17,7 +17,7 @@ const Footer = () => {
       setStatus('loading');
 
       const formData = new FormData();
-      formData.append("access_key", "0041bd31-002d-4d90-8939-4858fe07d7ce");
+      formData.append("access_key", "f75682cd-ed36-4731-8861-802e48e704aa");
       formData.append("from_name", "Newsletter Subscription");
       formData.append("subject", "New Newsletter Subscription");
       formData.append("email", email);
