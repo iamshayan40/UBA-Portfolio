@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IoIosArrowBack, IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io';
 import { readImageDirectory } from '@/components/services/ImageDirectoryReader';
 import { ImageFile, sortClientImages } from '@/lib/utils';
 
@@ -13,7 +13,6 @@ const ITEMS_PER_PAGE = 12;
 export default function ClientReviewsPage() {
   const [mounted, setMounted] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [images, setImages] = useState<ImageFile[]>([]);
 
@@ -36,24 +35,6 @@ export default function ClientReviewsPage() {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     return images.slice(startIndex, endIndex);
-  };
-
-  useEffect(() => {
-    // Show button when page is scrolled up 400px
-    const checkScrollTop = () => {
-      if (!showScrollTop && window.pageYOffset > 400) {
-        setShowScrollTop(true);
-      } else if (showScrollTop && window.pageYOffset <= 400) {
-        setShowScrollTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', checkScrollTop);
-    return () => window.removeEventListener('scroll', checkScrollTop);
-  }, [showScrollTop]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (!mounted) return null;
@@ -117,7 +98,7 @@ export default function ClientReviewsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 xl:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10"
           >
             {getCurrentReviews().map((image, index) => (
               <motion.div
@@ -131,7 +112,7 @@ export default function ClientReviewsPage() {
                   ease: "easeOut"
                 }}
                 onClick={() => setSelectedImage(image.image)}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
               >
                 <div className="relative h-full w-full transform transition-transform duration-700 group-hover:scale-110">
                   <Image
@@ -184,17 +165,6 @@ export default function ClientReviewsPage() {
             />
           </div>
         </div>
-      )}
-
-      {/* Go to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed right-5 sm:right-8 bottom-6 sm:bottom-8 z-[99999] w-12 h-12 rounded-full bg-yellow-400/90 backdrop-blur-sm shadow-xl hover:shadow-2xl flex items-center justify-center text-white hover:bg-yellow-500 transition-all hover:scale-110 animate-fade-in"
-          aria-label="Scroll to top"
-        >
-          <IoIosArrowUp className="w-6 h-6" />
-        </button>
       )}
     </main>
   );

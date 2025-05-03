@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IoIosArrowBack, IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { readImageDirectory } from '@/components/services/ImageDirectoryReader';
 import { ImageFile } from '@/lib/utils';
 
@@ -13,7 +13,6 @@ const ITEMS_PER_PAGE = 12;
 export default function SalesProofsPage() {
   const [mounted, setMounted] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [images, setImages] = useState<ImageFile[]>([]);
 
@@ -35,24 +34,6 @@ export default function SalesProofsPage() {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     return images.slice(startIndex, endIndex);
-  };
-
-  useEffect(() => {
-    // Show button when page is scrolled up 400px
-    const checkScrollTop = () => {
-      if (!showScrollTop && window.pageYOffset > 400) {
-        setShowScrollTop(true);
-      } else if (showScrollTop && window.pageYOffset <= 400) {
-        setShowScrollTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', checkScrollTop);
-    return () => window.removeEventListener('scroll', checkScrollTop);
-  }, [showScrollTop]);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (!mounted) return null;
@@ -117,7 +98,7 @@ export default function SalesProofsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 xl:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10"
           >
             {getCurrentImages().map((image, index) => (
               <motion.div
@@ -131,7 +112,7 @@ export default function SalesProofsPage() {
                   ease: "easeOut"
                 }}
                 onClick={() => setSelectedImage(image.image)}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
               >
                 <div className="relative h-full w-full transform transition-transform duration-700 group-hover:scale-110">
                   <Image
@@ -151,19 +132,97 @@ export default function SalesProofsPage() {
           {/* Pagination Controls */}
           {totalPages > 1 && (
             <div className="mt-12 flex justify-center items-center gap-2">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                <button
-                  key={pageNum}
-                  onClick={() => setCurrentPage(pageNum)}
-                  className={`px-4 py-2 rounded-lg transition-all duration-200 font-lexend font-light ${
-                    currentPage === pageNum
-                      ? 'bg-yellow-400 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              ))}
+              {/* Previous button */}
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-lg transition-all duration-200 font-lexend font-light ${
+                  currentPage === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                <IoIosArrowBack className="w-5 h-5" />
+              </button>
+
+              {/* Page numbers */}
+              {(() => {
+                let pages = [];
+                let startPage = currentPage;
+                let endPage = currentPage + 3;
+
+                // Adjust start and end page numbers
+                if (endPage > totalPages) {
+                  startPage = Math.max(1, totalPages - 3);
+                  endPage = totalPages;
+                }
+                if (startPage > 1) {
+                  pages.push(
+                    <button
+                      key={1}
+                      onClick={() => setCurrentPage(1)}
+                      className="px-4 py-2 rounded-lg transition-all duration-200 font-lexend font-light bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    >
+                      1
+                    </button>
+                  );
+                  if (startPage > 2) {
+                    pages.push(
+                      <span key="dots1" className="px-2 text-gray-400">...</span>
+                    );
+                  }
+                }
+
+                // Add page numbers
+                for (let i = startPage; i <= endPage; i++) {
+                  pages.push(
+                    <button
+                      key={i}
+                      onClick={() => setCurrentPage(i)}
+                      className={`px-4 py-2 rounded-lg transition-all duration-200 font-lexend font-light ${
+                        currentPage === i
+                          ? 'bg-yellow-400 text-white'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
+                    >
+                      {i}
+                    </button>
+                  );
+                }
+
+                // Add last page if needed
+                if (endPage < totalPages) {
+                  if (endPage < totalPages - 1) {
+                    pages.push(
+                      <span key="dots2" className="px-2 text-gray-400">...</span>
+                    );
+                  }
+                  pages.push(
+                    <button
+                      key={totalPages}
+                      onClick={() => setCurrentPage(totalPages)}
+                      className="px-4 py-2 rounded-lg transition-all duration-200 font-lexend font-light bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    >
+                      {totalPages}
+                    </button>
+                  );
+                }
+
+                return pages;
+              })()}
+
+              {/* Next button */}
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-lg transition-all duration-200 font-lexend font-light ${
+                  currentPage === totalPages
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                <IoIosArrowForward className="w-5 h-5" />
+              </button>
             </div>
           )}
         </div>
@@ -186,17 +245,6 @@ export default function SalesProofsPage() {
             />
           </div>
         </div>
-      )}
-
-      {/* Go to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed right-5 sm:right-8 bottom-6 sm:bottom-8 z-[99999] w-12 h-12 rounded-full bg-yellow-400/90 backdrop-blur-sm shadow-xl hover:shadow-2xl flex items-center justify-center text-white hover:bg-yellow-500 transition-all hover:scale-110 animate-fade-in"
-          aria-label="Scroll to top"
-        >
-          <IoIosArrowUp className="w-6 h-6" />
-        </button>
       )}
     </main>
   );

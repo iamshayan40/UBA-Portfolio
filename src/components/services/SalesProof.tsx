@@ -193,22 +193,116 @@ const SalesProof = () => {
 
           {/* Optimized Pagination */}
           {images.length > itemsPerPage && (
-            <div className="flex justify-center items-center mt-8 gap-3">
-              {[0, Math.floor((totalPages - 1) / 2), totalPages - 1].map((index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setIsAutoPlaying(false);
-                    setCurrentPage(index);
-                  }}
-                  className={`transition-all duration-300 ${
-                    currentPage === index
-                      ? 'w-3 h-3 bg-yellow-400 rounded-full transform scale-110 shadow-md'
-                      : 'w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
+            <div className="flex justify-center items-center mt-8 gap-2">
+              {/* Previous button */}
+              <button
+                onClick={() => {
+                  setIsAutoPlaying(false);
+                  setCurrentPage(prev => (prev === 0 ? totalPages - 1 : prev - 1));
+                }}
+                className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-all duration-200"
+                aria-label="Previous slide"
+              >
+                <IoIosArrowBack className="w-4 h-4" />
+              </button>
+
+              {(() => {
+                let pages = [];
+                let startPage = currentPage;
+                let endPage = Math.min(startPage + 3, totalPages - 1);
+
+                // Adjust start and end page numbers
+                if (endPage - startPage < 3) {
+                  startPage = Math.max(0, endPage - 3);
+                }
+
+                // First page
+                if (startPage > 0) {
+                  pages.push(
+                    <button
+                      key={0}
+                      onClick={() => {
+                        setIsAutoPlaying(false);
+                        setCurrentPage(0);
+                      }}
+                      className={`w-8 h-8 rounded-lg transition-all duration-200 ${
+                        currentPage === 0
+                          ? 'bg-yellow-400 text-white'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
+                      aria-label="Go to first slide"
+                    >
+                      1
+                    </button>
+                  );
+                  if (startPage > 1) {
+                    pages.push(
+                      <span key="dots1" className="px-1 text-gray-400">...</span>
+                    );
+                  }
+                }
+
+                // Page numbers
+                for (let i = startPage; i <= endPage; i++) {
+                  pages.push(
+                    <button
+                      key={i}
+                      onClick={() => {
+                        setIsAutoPlaying(false);
+                        setCurrentPage(i);
+                      }}
+                      className={`w-8 h-8 rounded-lg transition-all duration-200 ${
+                        currentPage === i
+                          ? 'bg-yellow-400 text-white'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    >
+                      {i + 1}
+                    </button>
+                  );
+                }
+
+                // Last page
+                if (endPage < totalPages - 1) {
+                  if (endPage < totalPages - 2) {
+                    pages.push(
+                      <span key="dots2" className="px-1 text-gray-400">...</span>
+                    );
+                  }
+                  pages.push(
+                    <button
+                      key={totalPages - 1}
+                      onClick={() => {
+                        setIsAutoPlaying(false);
+                        setCurrentPage(totalPages - 1);
+                      }}
+                      className={`w-8 h-8 rounded-lg transition-all duration-200 ${
+                        currentPage === totalPages - 1
+                          ? 'bg-yellow-400 text-white'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
+                      aria-label="Go to last slide"
+                    >
+                      {totalPages}
+                    </button>
+                  );
+                }
+
+                return pages;
+              })()}
+
+              {/* Next button */}
+              <button
+                onClick={() => {
+                  setIsAutoPlaying(false);
+                  setCurrentPage(prev => (prev === totalPages - 1 ? 0 : prev + 1));
+                }}
+                className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-all duration-200"
+                aria-label="Next slide"
+              >
+                <IoIosArrowForward className="w-4 h-4" />
+              </button>
             </div>
           )}
         </div>

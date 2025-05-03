@@ -120,7 +120,7 @@ const MetaAdsResult = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-poppins font-semibold text-gray-900 mb-6 tracking-tight flex items-center justify-center gap-4"
           >
-            <SiMeta className="w-12 h-12 text-[#0866FF]" /> Meta Ads <span className='text-yellow-500'>Results</span>
+            <SiMeta className="w-12 h-12 -mr-3 md:-mr-0 text-[#0866FF]" />Meta Ads<span className='text-yellow-500 -ml-2'>Results</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

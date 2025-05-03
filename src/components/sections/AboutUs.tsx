@@ -160,7 +160,7 @@ const AboutUs = () => {
               </div>
               <div className="flex items-center justify-center space-x-3 mt-6">
                 <motion.a
-                  href="https://wa.me/+923416019234"
+                  href="https://wa.me/+923366789031"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 flex items-center justify-center rounded-full bg-white/80 hover:bg-green-500 text-gray-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
@@ -200,7 +200,8 @@ const AboutUs = () => {
             <div className="w-full md:w-2/3 space-y-4">
               <div className="space-y-2">
                 <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-                  Usama Bin Amir
+                  Usama Amir Khosa
+                  <div className="text-sm md:text-base font-normal text-gray-600">(Usama Bin Amir)</div>
                 </h3>
                 <p className="text-lg md:text-xl font-medium text-gray-900">
                   Founder & Head of Global Strategy
@@ -247,8 +248,7 @@ const AboutUs = () => {
             <span className="absolute font-montserrat -left-6 top-0 text-4xl opacity-10">
               "
             </span>
-            Our commitment to excellence drives us to create digital experiences
-            that transcend expectations.
+            Let’s create something remarkable. Something global. Something lasting.
             <span className="absolute -right-6 bottom-0 text-4xl opacity-10">
               "
             </span>

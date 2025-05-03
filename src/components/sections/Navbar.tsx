@@ -226,7 +226,7 @@ export default function Navbar() {
                     href="/why-me"
                     className="block font-lexend font-light text-[5vw] text-black hover:text-yellow-500"
                   >
-                    WHY ME
+                    WHY US
                   </Link>
                 </motion.li>
                 <motion.li

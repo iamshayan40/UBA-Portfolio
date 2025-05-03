@@ -10,24 +10,18 @@ export interface ImageFile {
 }
 
 export const getImageNumberFromFilename = (filename: string): number => {
-  // Handle meta X.jpeg format
-  if (filename.toLowerCase().startsWith('meta ')) {
-    return parseInt(filename.split(' ')[1].split('.')[0]);
-  }
-  
-  // Handle (X).jpg format
-  const match = filename.match(/\((\d+)\)/);
-  if (match) {
-    return parseInt(match[1]);
-  }
-  
-  // Handle X.jpg format
-  const numberMatch = filename.match(/^(\d+)\./);
-  if (numberMatch) {
-    return parseInt(numberMatch[1]);
-  }
-  
-  return 0;
+  const match = filename.match(/\((\d+)\)|(\d+)/);
+  return match ? parseInt(match[1] || match[2]) : Infinity;
+};
+
+const getSalesProofPriority = (filename: string): number => {
+  if (filename.includes('Top')) return 0;
+  if (filename.match(/sales \(/)) return 1;
+  if (filename.match(/sales 4 \(/)) return 2;
+  if (filename.match(/sales 3 \(/)) return 3;
+  if (filename.match(/sales 2 \(/)) return 4;
+  if (filename.match(/sales 1 \(/)) return 5;
+  return 6;
 };
 
 export const sortImagesByNumber = (images: ImageFile[]): ImageFile[] => {
@@ -64,6 +58,26 @@ export const sortClientImages = (images: ImageFile[]): ImageFile[] => {
     if (!aIsTopReview && bIsTopReview) return 1;
     
     // If both are top reviews or both are regular reviews, sort by number
+    const aNum = getImageNumberFromFilename(aName);
+    const bNum = getImageNumberFromFilename(bName);
+    return aNum - bNum;
+  });
+};
+
+export const sortSalesProofImages = (images: ImageFile[]): ImageFile[] => {
+  return images.sort((a, b) => {
+    const aName = a.image.split('/').pop() || '';
+    const bName = b.image.split('/').pop() || '';
+
+    // First sort by priority (Top, sales, sales 4, sales 3, sales 2, sales 1)
+    const aPriority = getSalesProofPriority(aName);
+    const bPriority = getSalesProofPriority(bName);
+    
+    if (aPriority !== bPriority) {
+      return aPriority - bPriority;
+    }
+
+    // Then sort by number within each priority group
     const aNum = getImageNumberFromFilename(aName);
     const bNum = getImageNumberFromFilename(bName);
     return aNum - bNum;
