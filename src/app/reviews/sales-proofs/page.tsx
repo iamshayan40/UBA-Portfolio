@@ -69,7 +69,7 @@ export default function SalesProofsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="inline-block"
             >
-              <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-yellow-500/10 to-yellow-500/20 rounded-full text-yellow-600 text-sm font-lexend font-light mb-4 backdrop-blur-sm border border-yellow-200">
+              <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-yellow-500/10 to-yellow-500/20 rounded-full text-yellow-600 text-sm font-lexend font-light mb-4 backdrop-blur-sm">
                 Sales Portfolio
               </span>
             </motion.div>
@@ -98,7 +98,7 @@ export default function SalesProofsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 xl:gap-10"
           >
             {getCurrentImages().map((image, index) => (
               <motion.div
@@ -112,17 +112,17 @@ export default function SalesProofsPage() {
                   ease: "easeOut"
                 }}
                 onClick={() => setSelectedImage(image.image)}
-                className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                className="group relative cursor-pointer overflow-hidden"
               >
-                <div className="relative h-full w-full transform transition-transform duration-700 group-hover:scale-110">
+                <div className="relative w-full pt-[133%]">
                   <Image
                     src={image.image}
                     alt={`Sales Proof ${image.id}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     loading={index < 8 ? "eager" : "lazy"}
-                    quality={75}
-                    className="object-cover"
+                    quality={100}
+                    className="object-contain w-full h-full"
                   />
                 </div>
               </motion.div>

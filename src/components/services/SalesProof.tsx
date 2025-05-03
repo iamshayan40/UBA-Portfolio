@@ -173,15 +173,15 @@ const SalesProof = () => {
                       className="relative w-full md:w-96 aspect-[3/4] cursor-pointer"
                       onClick={() => handleImageClick(image.image)}
                     >
-                      <div className="relative h-full w-full rounded-2xl shadow-lg overflow-hidden">
+                      <div className="relative h-full w-full overflow-hidden">
                         <Image
                           src={image.image}
                           alt={`Sales Proof ${image.id}`}
                           fill
                           priority={index < 3}
                           loading={index < 3 ? "eager" : "lazy"}
-                          quality={75}
-                          className="object-cover transition-transform duration-500 hover:scale-110"
+                          quality={100}
+                          className="object-contain w-full h-full"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       </div>

@@ -119,39 +119,75 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
-          className="mt-20 text-center max-w-2xl mx-auto"
+          className="mt-20 text-center max-w-4xl mx-auto px-4"
           id="contact-whatsapp"
         >
-          <div className="mb-8 space-y-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 font-poppins">
-              Ready to Transform Your <span className="text-yellow-500">Business?</span>
-            </h3>
-            <p className="text-gray-600 font-lexend text-lg">
-               Subscribe to a package or request custom pricing by contacting Usama Bin Amir&apos;s team on WhatsApp
-            </p>
-            <p className="text-yellow-600 font-poppins font-medium text-xl">
-              Let&apos;s launch something legendary.
-            </p>
+          <div className="mb-12 space-y-8">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 font-poppins tracking-tight"
+            >
+              ✨ AI-Powered Digital Slip <span className="text-yellow-500">System</span>
+            </motion.h2>
+            
+            <div className="space-y-6">
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="text-lg sm:text-xl md:text-2xl text-gray-800 font-lexend font-light leading-relaxed"
+              >
+                Every client receives a <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent font-medium">digitally generated appointment slip</span> powered by our AI-assisted booking system — confirming launch date, time, and scope of work.
+              </motion.p>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="text-lg sm:text-xl md:text-2xl text-gray-800 font-lexend font-light leading-relaxed"
+              >
+                This ensures <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent font-medium">no delays, no confusion — just professional execution.</span>
+              </motion.p>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100 space-y-4"
+            >
+              <p className="text-base sm:text-lg text-gray-700 font-lexend">
+                📱 To activate your slip and start your brand journey, contact Usama Bin Amir's team on WhatsApp:
+              </p>
+              <p className="text-xl sm:text-2xl md:text-3xl text-gray-900 font-poppins font-semibold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+                +92 336 6789031
+              </p>
+              <p className="text-sm sm:text-base text-gray-600 font-lexend italic">
+                Powered by human expertise. Enhanced by artificial intelligence.
+              </p>
+            </motion.div>
           </div>
 
-          <Link
-            href="https://wa.me/923366789031"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-[#25D366] rounded-full transition-all duration-300 hover:-translate-y-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.15)] overflow-hidden"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="relative"
           >
-            <div className="absolute inset-0 bg-[#128C7E] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-            <svg
-              className="relative w-6 h-6 mr-3"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+            <Link
+              href="https://wa.me/923366789031"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white bg-[#25D366] rounded-full transition-all duration-300 hover:-translate-y-1 hover:bg-[#128C7E] shadow-lg hover:shadow-xl"
             >
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-            </svg>
-            <span className="relative">Contact Us on WhatsApp</span>
-          </Link>
-          <p className="mt-4 text-gray-500 font-lexend">+92 336 6789031</p>
+              <svg
+                className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span>Contact Us on WhatsApp</span>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

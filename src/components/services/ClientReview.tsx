@@ -119,7 +119,7 @@ const ClientReview = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-poppins font-semibold text-gray-900 mb-6 tracking-tight"
           >
-            Client <span className='text-yellow-500'>Reviews</span>
+            Client <span className="text-yellow-500">Reviews</span>
           </motion.h2>
 
           <motion.p
@@ -138,7 +138,7 @@ const ClientReview = () => {
           {/* Navigation buttons */}
           <button
             onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg hover:shadow-xl flex items-center justify-center text-gray-700 transition-all duration-300 hover:scale-110 z-20"
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-gray-700 transition-all duration-300 hover:scale-110 z-20"
             aria-label="Previous slide"
           >
             <IoIosArrowBack className="w-6 h-6" />
@@ -146,7 +146,7 @@ const ClientReview = () => {
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg hover:shadow-xl flex items-center justify-center text-gray-700 transition-all duration-300 hover:scale-110 z-20"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-gray-700 transition-all duration-300 hover:scale-110 z-20"
             aria-label="Next slide"
           >
             <IoIosArrowForward className="w-6 h-6" />
@@ -167,21 +167,18 @@ const ClientReview = () => {
                   .map((image, index) => (
                     <motion.div
                       key={image.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="relative w-full md:w-96 aspect-[3/4] cursor-pointer"
                       onClick={() => handleImageClick(image.image)}
                     >
-                      <div className="relative h-full w-full rounded-2xl shadow-lg overflow-hidden">
+                      <div className="relative h-full w-full overflow-hidden">
                         <Image
                           src={image.image}
                           alt={`Client Review ${image.id}`}
                           fill
                           priority={index < 3}
                           loading={index < 3 ? "eager" : "lazy"}
-                          quality={75}
-                          className="object-cover transition-transform duration-500 hover:scale-110"
+                          quality={100}
+                          className="object-contain w-full h-full"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       </div>

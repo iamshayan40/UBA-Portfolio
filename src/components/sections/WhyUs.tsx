@@ -173,7 +173,7 @@ export default function WhyMe() {
           <div className="relative p-12">
             <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200 shadow-lg will-change-transform transition-transform duration-300 hover:scale-[1.02]">
               <Image
-                src="/WhyUsLogo.png"
+                src="/WhyUsLogo.jpg"
                 alt="Professional Portrait"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -187,17 +187,17 @@ export default function WhyMe() {
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2 }}
-              className="absolute -left-6 top-1/3 font-lexend font-light p-4 backdrop-blur-sm bg-gradient-to-br from-purple-100 to-pink-100 border border-gray-200 shadow-lg rounded-xl hover:border-gray-300 transition-all duration-300 hover:scale-105 hover:-translate-x-1 group z-20"
+              className="absolute -left-6 top-1/3 font-lexend font-light p-2 sm:p-4 backdrop-blur-sm bg-gradient-to-br from-purple-100 to-pink-100 border border-gray-200 shadow-lg rounded-xl hover:border-gray-300 transition-all duration-300 hover:scale-105 hover:-translate-x-1 group z-20"
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-200 to-pink-200 flex items-center justify-center group-hover:from-purple-300 group-hover:to-pink-300 transition-all">
-                  <svg className="w-5 h-5 text-purple-600 group-hover:text-purple-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-purple-200 to-pink-200 flex items-center justify-center group-hover:from-purple-300 group-hover:to-pink-300 transition-all">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 group-hover:text-purple-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-gray-800 font-medium">100%</h3>
-                  <p className="text-gray-600 text-sm group-hover:text-gray-700">Project Success</p>
+                  <h3 className="text-gray-800 font-medium text-sm sm:text-base">100%</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm group-hover:text-gray-700">Project Success</p>
                 </div>
               </div>
             </motion.div>
@@ -206,17 +206,17 @@ export default function WhyMe() {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.4 }}
-              className="absolute font-lexend font-light -right-6 top-2/3 p-4 backdrop-blur-sm bg-gradient-to-br from-blue-100 to-purple-100 border border-gray-200 shadow-lg rounded-xl hover:border-gray-300 transition-all duration-300 hover:scale-105 hover:translate-x-1 group z-20"
+              className="absolute font-lexend font-light -right-6 top-2/3 p-2 sm:p-4 backdrop-blur-sm bg-gradient-to-br from-blue-100 to-purple-100 border border-gray-200 shadow-lg rounded-xl hover:border-gray-300 transition-all duration-300 hover:scale-105 hover:translate-x-1 group z-20"
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full font-lexend font-light bg-gradient-to-br from-blue-200 to-purple-200 flex items-center justify-center group-hover:from-blue-300 group-hover:to-purple-300 transition-all">
-                  <svg className="w-5 h-5 text-blue-600 group-hover:text-blue-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-200 to-purple-200 flex items-center justify-center group-hover:from-blue-300 group-hover:to-purple-300 transition-all">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 group-hover:text-blue-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-gray-800 font-medium">Fast</h3>
-                  <p className="text-gray-600 text-sm group-hover:text-gray-700">Delivery</p>
+                  <h3 className="text-gray-800 font-medium text-sm sm:text-base">Fast</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm group-hover:text-gray-700">Delivery</p>
                 </div>
               </div>
             </motion.div>
@@ -225,17 +225,17 @@ export default function WhyMe() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="absolute -bottom-6 left-6 right-6 p-6 backdrop-blur-sm bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-lg rounded-xl hover:border-gray-300 transition-all duration-300 hover:scale-[1.02] group z-20"
+              className="absolute -bottom-6 left-6 right-6 p-4 sm:p-6 backdrop-blur-sm bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-lg rounded-xl hover:border-gray-300 transition-all duration-300 hover:scale-[1.02] group z-20"
             >
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12  rounded-full bg-gradient-to-br from-blue-200 to-purple-200 flex items-center justify-center group-hover:from-blue-300 group-hover:to-purple-300 transition-all">
-                  <svg className="w-6 h-6 text-blue-600 group-hover:text-blue-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-blue-200 to-purple-200 flex items-center justify-center group-hover:from-blue-300 group-hover:to-purple-300 transition-all">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 group-hover:text-blue-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-gray-800 font-lexend font-light group-hover:text-gray-900">Available for Work</h3>
-                  <p className="font-lexend font-light text-gray-600 group-hover:text-gray-700">Open to new opportunities</p>
+                  <h3 className="text-gray-800 font-lexend font-light text-sm sm:text-base group-hover:text-gray-900">Available for Work</h3>
+                  <p className="font-lexend font-light text-xs sm:text-sm text-gray-600 group-hover:text-gray-700">Open to new opportunities</p>
                 </div>
               </div>
             </motion.div>
