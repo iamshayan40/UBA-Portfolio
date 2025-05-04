@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Lexend, Montserrat } from "next/font/google";
 import { ClientProvider } from "@/components/ClientProvider";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import Preloader from "@/components/Preloader";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -54,6 +55,7 @@ export default function RootLayout({
         <link rel="prefetch" href="/ads/meta-results" as="document" />
       </head>
       <body>
+        <Preloader />
         <ClientProvider>
           {children}
           <ScrollToTop />

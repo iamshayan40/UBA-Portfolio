@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaWhatsapp } from "react-icons/fa";
 
 const services = [
   {
@@ -119,19 +120,27 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
-          className="mt-20 text-center max-w-4xl mx-auto px-4"
+          className="-mt-8 text-center max-w-4xl mx-auto px-4"
           id="contact-whatsapp"
         >
-          <div className="mb-12 space-y-8">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 font-poppins tracking-tight"
-            >
-              ✨ AI-Powered Digital Slip <span className="text-yellow-500">System</span>
-            </motion.h2>
+          <div className="mb-8 space-y-3 sm:space-y-4">
+            <div className="flex flex-col items-center gap-3 sm:gap-4">
+              <img 
+                src="/AI.png" 
+                alt="AI Icon" 
+                className="w-20 h-20 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain"
+              />
+              <div className="flex flex-col sm:flex-row items-center sm:items-center gap-1 sm:gap-1 text-center sm:text-left">
+                <span className="text-[28px] leading-tight sm:text-3xl md:text-4xl font-semibold text-gray-900 font-poppins tracking-tight">
+                  <span className="font-lexend text-gray-800">UBA</span> AI-Powered Digital
+                </span>
+                <span className="text-[28px] leading-tight sm:text-3xl md:text-4xl font-semibold text-gray-900 font-poppins tracking-tight">
+                  <span className="block sm:inline">Slip <span className="text-yellow-500">System.</span></span>
+                </span>
+              </div>
+            </div>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -150,20 +159,25 @@ export default function Services() {
             </div>
 
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100 space-y-4"
-            >
-              <p className="text-base sm:text-lg text-gray-700 font-lexend">
-                📱 To activate your slip and start your brand journey, contact Usama Bin Amir's team on WhatsApp:
-              </p>
-              <p className="text-xl sm:text-2xl md:text-3xl text-gray-900 font-poppins font-semibold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-                +92 336 6789031
-              </p>
-              <p className="text-sm sm:text-base text-gray-600 font-lexend italic">
-                Powered by human expertise. Enhanced by artificial intelligence.
-              </p>
-            </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100 space-y-4"
+>
+  <p className="text-base sm:text-lg text-gray-700 font-lexend text-center">
+    📱 To activate your slip and start your brand journey, contact Usama Bin Amir's team on WhatsApp:
+  </p>
+
+  <div className="flex justify-center items-center gap-3">
+    <FaWhatsapp className="text-black text-2xl sm:text-3xl -mr-2" />
+    <p className="text-xl sm:text-2xl md:text-2xl font-poppins font-semibold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+      +92 336 6789031
+    </p>
+  </div>
+
+  <p className="text-sm sm:text-base text-gray-600 font-lexend italic text-center">
+    Powered by human expertise. Enhanced by Artificial Intelligence.
+  </p>
+</motion.div>
           </div>
 
           <motion.div
