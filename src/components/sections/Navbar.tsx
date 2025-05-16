@@ -211,7 +211,7 @@ export default function Navbar() {
                   transition={{ delay: 0.7, duration: 0.5 }}
                 >
                   <Link
-                    href="/#about"
+                    href="#about"
                     className="block font-lexend font-light text-[5vw] text-black hover:text-yellow-500"
                   >
                     ABOUT
@@ -223,7 +223,7 @@ export default function Navbar() {
                   transition={{ delay: 0.8, duration: 0.5 }}
                 >
                   <Link
-                    href="/why-me"
+                    href="#why-me"
                     className="block font-lexend font-light text-[5vw] text-black hover:text-yellow-500"
                   >
                     WHY US
@@ -247,7 +247,7 @@ export default function Navbar() {
                   transition={{ delay: 1.0, duration: 0.5 }}
                 >
                   <Link
-                    href="/proof/sales-proof"
+                    href="/reviews/sales-proofs"
                     className="block font-lexend font-light text-[5vw] text-black hover:text-yellow-500"
                   >
                     400+ SALES PROOF
@@ -259,7 +259,7 @@ export default function Navbar() {
                   transition={{ delay: 1.1, duration: 0.5 }}
                 >
                   <Link
-                    href="/ads/meta-results"
+                    href="/reviews/meta-results"
                     className="block font-lexend font-light text-[5vw] text-black hover:text-yellow-500"
                   >
                     META ADS RESULT
@@ -271,7 +271,7 @@ export default function Navbar() {
                   transition={{ delay: 1.2, duration: 0.5 }}
                 >
                   <Link
-                    href="/#services"
+                    href="#services"
                     className="block font-lexend font-light text-[5vw] text-black hover:text-yellow-500"
                     onClick={(e) => {
                       e.preventDefault();
