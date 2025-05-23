@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://usamabinamirglobal.com
+
+# Sitemaps
+Sitemap: https://usamabinamirglobal.com/sitemap.xml
