@@ -1,9 +1,21 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /api
+Disallow: /admin
+Disallow: /_next
+Disallow: /static
+
+# GPTBot
+User-agent: GPTBot
+Allow: /blog
+Allow: /services
+Allow: /about
+Disallow: /*
 
 # Host
 Host: https://usamabinamirglobal.com
 
 # Sitemaps
 Sitemap: https://usamabinamirglobal.com/sitemap.xml
+Sitemap: https://usamabinamirglobal.com/server-sitemap.xml
