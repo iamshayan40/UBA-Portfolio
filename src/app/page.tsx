@@ -7,6 +7,7 @@ import MetaAdsResult from "@/components/services/MetaAdsResult";
 import ClientReview from "@/components/services/ClientReview";
 import Services from "@/components/sections/Services";
 import Footer from "@/components/sections/Footer";
+import Announcement from "@/components/ui/Announcement";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className="bg-white min-h-screen">
+      <Announcement />
       <Navbar />
       <Hero />
       <AboutUs />
