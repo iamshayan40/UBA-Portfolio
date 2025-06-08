@@ -11,7 +11,7 @@ import Announcement from "@/components/ui/Announcement";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Digital Marketing & E-commerce Services | Usama Bin Amir",
+  title: "Usama Bin Amir",
   description:
     "Transform your business with Pakistan's leading digital marketing expert. Meta Ads management, e-commerce solutions, and proven growth strategies that deliver real results.",
   keywords: [
