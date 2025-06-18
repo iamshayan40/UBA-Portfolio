@@ -109,6 +109,7 @@ export default function WhyMe() {
     <div id='why-me'
       ref={containerRef} 
       className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white"
+      data-scroll-section
     >
       <Background />
 
@@ -142,7 +143,7 @@ export default function WhyMe() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-           With 4+ years of global eCommerce experience, We specialize in building scalable brands. We’ve launched 300+ Shopify stores and managed 500+ Meta Ads campaigns, delivering real results across UAE, KSA, Pakistan, and UK.
+           With 4+ years of global eCommerce experience, We specialize in building scalable brands. We've launched 300+ Shopify stores and managed 500+ Meta Ads campaigns, delivering real results across UAE, KSA, Pakistan, and UK.
           </motion.p>
 
           <motion.p 

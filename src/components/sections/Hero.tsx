@@ -114,6 +114,7 @@ export default function Hero() {
       className="h-screen overflow-hidden p-[10px] sm:p-[12px] md:p-[16px] lg:p-[20px] xl:p-[24px] bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"
       role="banner"
       aria-label="Welcome to UBA International E-commerce Services"
+      data-scroll-section
     >
       <div className="h-[calc(100vh-20px)] sm:h-[calc(100vh-24px)] md:h-[calc(100vh-32px)] lg:h-[calc(100vh-40px)] xl:h-[calc(100vh-48px)] glass rounded-[15px] sm:rounded-[20px] md:rounded-[25px] pt-28 sm:pt-26 md:pt-44 overflow-y-auto">
         <div className="max-w-[90rem] pt-16 md:pt-0 mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
@@ -123,6 +124,8 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-[7.5vw] md:text-6xl font-poppins text-slate-800 font-semibold text-center leading-tight md:leading-[1]"
             aria-label="Usama Bin Amir International E-Commerce Services"
+            data-scroll
+            data-scroll-speed="0.5"
           >
             <span className="text-yellow-500 md:inline block">
               Usama Bin Amir

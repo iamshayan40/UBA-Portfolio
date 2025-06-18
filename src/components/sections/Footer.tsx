@@ -68,7 +68,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-gray-300">
+    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-gray-300" data-scroll-section>
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
           <div className="space-y-2 md:space-y-4">

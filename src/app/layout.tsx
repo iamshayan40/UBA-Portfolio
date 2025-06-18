@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Lexend, Montserrat } from "next/font/google";
 import { ClientProvider } from "@/components/ClientProvider";
+import LocomotiveScrollProvider from "@/components/LocomotiveScrollProvider";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import Preloader from "@/components/Preloader";
 import { organizationJsonLd } from "./jsonld";
@@ -145,8 +146,10 @@ export default function RootLayout({
       <body>
         <Preloader />
         <ClientProvider>
-          {children}
-          <ScrollToTop />
+          <LocomotiveScrollProvider>
+            {children}
+            <ScrollToTop />
+          </LocomotiveScrollProvider>
         </ClientProvider>
       </body>
     </html>

@@ -97,6 +97,7 @@ const AboutUs = () => {
       id="about"
       className="w-full py-12 bg-gradient-to-br from-pink-100/50 via-blue-100/50 to-purple-200/50 overflow-hidden relative"
       ref={scrollRef}
+      data-scroll-section
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob" />
@@ -248,7 +249,7 @@ const AboutUs = () => {
             <span className="absolute font-montserrat -left-6 top-0 text-4xl opacity-10">
               "
             </span>
-            Let’s create something remarkable. Something global. Something lasting.
+            Let's create something remarkable. Something global. Something lasting.
             <span className="absolute -right-6 bottom-0 text-4xl opacity-10">
               "
             </span>

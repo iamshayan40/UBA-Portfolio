@@ -116,8 +116,16 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* Locomotive Scroll Optimizations */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -138,6 +146,23 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Locomotive Scroll Container */
+[data-scroll-container] {
+  min-height: 100vh;
+}
+
+/* Smooth scroll elements */
+[data-scroll] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Optimize animations for Locomotive */
+[data-scroll-section] {
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 @keyframes blob {

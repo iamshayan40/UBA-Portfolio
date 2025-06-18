@@ -51,7 +51,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative w-full py-32 overflow-hidden bg-gradient-to-br from-purple-200/50 via-blue-100/50 to-pink-100/100">
+    <section id="services" className="relative w-full py-32 overflow-hidden bg-gradient-to-br from-purple-200/50 via-blue-100/50 to-pink-100/100" data-scroll-section>
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />

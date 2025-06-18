@@ -21,8 +21,10 @@ const MetaAdsResult = () => {
   useEffect(() => {
     const loadImages = async () => {
       const metaImages = await readImageDirectory('Meta Ads Results');
-      // Only take first 10 images for carousel
       setImages(metaImages.slice(0, 10));
+      if (typeof window !== 'undefined' && window.locomotive) {
+        setTimeout(() => window.locomotive.update(), 100);
+      }
     };
     loadImages();
   }, []);
@@ -92,7 +94,7 @@ const MetaAdsResult = () => {
   if (images.length === 0) return null;
 
   return (
-    <section className="w-full py-28 bg-gradient-to-br from-pink-100/100 via-blue-100/50 to-purple-200/90 relative overflow-hidden">
+    <section className="w-full py-28 bg-gradient-to-br from-pink-100/100 via-blue-100/50 to-purple-200/90 relative overflow-hidden" data-scroll-section>
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
