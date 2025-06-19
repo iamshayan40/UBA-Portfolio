@@ -25,20 +25,18 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
       el: scrollRef.current,
       smooth: true,
       smoothMobile: true,
-      lerp: 0.1,
-      multiplier: 1,
-      class: 'is-revealed',
-      reloadOnContextChange: true,
+      lerp: 0.07,
+      multiplier: 1.1,
       touchMultiplier: 2,
       smartphone: {
         smooth: true,
-        lerp: 0.1,
-        multiplier: 1,
+        lerp: 0.07,
+        multiplier: 1.1,
       },
       tablet: {
         smooth: true,
-        lerp: 0.1,
-        multiplier: 1,
+        lerp: 0.07,
+        multiplier: 1.1,
       },
     });
 
@@ -62,8 +60,16 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
     };
   }, [pathname]);
 
+  useEffect(() => {
+    if (locomotiveRef.current) {
+      setTimeout(() => {
+        locomotiveRef.current.update();
+      }, 500);
+    }
+  }, [children]);
+
   return (
-    <div ref={scrollRef} data-scroll-container>
+    <div ref={scrollRef} data-scroll-container style={{ willChange: 'transform' }}>
       {children}
     </div>
   );

@@ -39,17 +39,19 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="bg-white min-h-screen">
-      <Announcement />
-      <Navbar />
-      <Hero />
-      <AboutUs />
-      <WhyUs />
-      <SalesProof />
-      <MetaAdsResult />
-      <ClientReview />
-      <Services />
+    <>
+      <main className="bg-white min-h-screen">
+        <Announcement />
+        <Navbar />
+        <Hero />
+        <AboutUs />
+        <WhyUs />
+        <SalesProof />
+        <MetaAdsResult />
+        <ClientReview />
+        <Services />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
