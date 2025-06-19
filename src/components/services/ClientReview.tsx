@@ -21,8 +21,8 @@ const ClientReview = () => {
     const loadImages = async () => {
       const clientImages = await readImageDirectory('Client Reviews');
       setImages(sortClientImages(clientImages));
-      if (typeof window !== 'undefined' && window.locomotive) {
-        setTimeout(() => window.locomotive.update(), 100);
+      if (typeof window !== 'undefined' && (window as any).locomotive) {
+        setTimeout(() => (window as any).locomotive.update(), 100);
       }
     };
     loadImages();
@@ -90,7 +90,13 @@ const ClientReview = () => {
     setSelectedImage(imageSrc);
   }, []);
 
-  if (images.length === 0) return null;
+  if (images.length === 0 && imagesLoaded) {
+    return (
+      <section data-scroll-section className="min-h-[300px] flex items-center justify-center">
+        <span>No images found.</span>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full py-28 bg-gradient-to-br from-pink-100/100 via-blue-100/50 to-purple-200/90 relative overflow-hidden" data-scroll-section>

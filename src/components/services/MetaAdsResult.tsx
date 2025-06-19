@@ -22,8 +22,8 @@ const MetaAdsResult = () => {
     const loadImages = async () => {
       const metaImages = await readImageDirectory('Meta Ads Results');
       setImages(metaImages.slice(0, 10));
-      if (typeof window !== 'undefined' && window.locomotive) {
-        setTimeout(() => window.locomotive.update(), 100);
+      if (typeof window !== 'undefined' && (window as any).locomotive) {
+        setTimeout(() => (window as any).locomotive.update(), 100);
       }
     };
     loadImages();

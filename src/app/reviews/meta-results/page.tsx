@@ -37,10 +37,16 @@ export default function MetaResultsPage() {
     return images.slice(startIndex, endIndex);
   };
 
+  useEffect(() => {
+    if (mounted && typeof window !== 'undefined' && (window as any).locomotive) {
+      setTimeout(() => (window as any).locomotive.update(), 100);
+    }
+  }, [images, mounted]);
+
   if (!mounted) return null;
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50 relative">
+    <main className="min-h-screen overflow-x-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50 relative" data-scroll-section>
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0866FF]/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />

@@ -21,8 +21,8 @@ const SalesProof = () => {
     const loadImages = async () => {
       const salesImages = await readImageDirectory('Sales Proofs');
       setImages(salesImages);
-      if (typeof window !== 'undefined' && window.locomotive) {
-        setTimeout(() => window.locomotive.update(), 100);
+      if (typeof window !== 'undefined' && (window as any).locomotive) {
+        setTimeout(() => (window as any).locomotive.update(), 100);
       }
     };
     loadImages();
