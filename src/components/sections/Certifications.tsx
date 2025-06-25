@@ -40,11 +40,11 @@ const Certifications = () => {
     <section id='certifications' data-scroll-section className="w-full bg-gradient-to-br from-pink-100/45 to-blue-100/30 py-16 px-4 transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-          <span className="text-black">My </span>
-          <span className="text-yellow-400">Certificates</span>
+          <span className="text-black">Certifications</span>
+          <span className="text-yellow-500">'s</span>
         </h2>
         <p className="text-center font-light font-lexend text-gray-600 text-base md:text-lg mb-12 max-w-2xl mx-auto">
-          These certifications reflect my commitment to mastering the essential skills in web development, design, marketing, and analytics.
+          Certified by Google, Meta and Top Global Universities.
         </p>
 
         {/* Row 1 */}

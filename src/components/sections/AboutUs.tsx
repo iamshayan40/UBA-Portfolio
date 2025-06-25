@@ -2,13 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useAnimation,
-} from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import {
@@ -17,6 +10,7 @@ import {
   FaFacebookF,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const ImageWithFallback = ({
   src,
@@ -51,34 +45,7 @@ const AboutUs = () => {
     triggerOnce: false,
   });
 
-  const controls = useAnimation();
-  const { scrollYProgress } = useScroll();
-
-  const y = useSpring(useTransform(scrollYProgress, [0, 1], [0, -50]), {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
+  // Animation variants for small elements only
   const itemVariants = {
     hidden: { y: 40, opacity: 0 },
     visible: {
@@ -105,47 +72,28 @@ const AboutUs = () => {
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000" />
       </div>
 
-      <motion.div style={{ y }} className="container mx-auto px-4">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
-          <motion.div variants={itemVariants} className="mb-4">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="mb-4">
             <span className="text-md font-lexend tracking-wider uppercase bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-transparent bg-clip-text font-semibold">
               Meet Our Founder & Team
             </span>
-          </motion.div>
-          <motion.h1
-            variants={itemVariants}
-            className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-gray-900"
-          >
+          </div>
+          <h1 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-gray-900">
             Visionaries Driving Our <span className="text-yellow-500">Mission</span>
-          </motion.h1>
-          <motion.p
-            variants={itemVariants}
-            className="text-gray-600 font-lexend font-light text-base md:text-lg leading-relaxed"
-          >
+          </h1>
+          <p className="text-gray-600 font-lexend font-light text-base md:text-lg leading-relaxed">
             Get to know the passionate minds shaping our future and fueling our
             growth.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="max-w-5xl mx-auto"
-        >
-          <motion.div
-            variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
+        <div className="max-w-5xl mx-auto">
+          <div
             className="flex flex-col md:flex-row gap-6 md:gap-8 items-center font-lexend bg-white/40 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/30 hover:border-white/50 transition-all duration-300"
           >
             <div className="w-full md:w-1/3">
-            <div className="relative aspect-square max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[130px] xl:max-w-[165px] mx-auto group">
+              <div className="relative aspect-square max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[130px] xl:max-w-[165px] mx-auto group">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-pink-600/20 to-purple-600/20 rounded-3xl transform rotate-6 scale-[0.98] opacity-70 blur-xl transition-all duration-300 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-200/30 via-pink-200/30 to-purple-200/30 rounded-3xl transform -rotate-3 scale-[0.98] opacity-50 group-hover:rotate-6 transition-all duration-300" />
                 <div className="relative h-full rounded-3xl overflow-hidden border-2 border-white/70 shadow-2xl group-hover:scale-[1.02] transition-all duration-300">
@@ -160,6 +108,7 @@ const AboutUs = () => {
                 </div>
               </div>
               <div className="flex items-center justify-center space-x-3 mt-6">
+                {/* Keep Framer Motion only for small icon hover effects */}
                 <motion.a
                   href="https://wa.me/+923366789031"
                   target="_blank"
@@ -233,17 +182,15 @@ const AboutUs = () => {
                 </svg>
               </Link>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="mt-12 text-center max-w-3xl mx-auto"
-        >
+        <div className="mt-12 text-center max-w-3xl mx-auto">
+          {/* Keep Framer Motion for blockquote fade-in if desired */}
           <motion.blockquote
             variants={itemVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
             className="text-xl md:text-2xl font-medium text-gray-700 italic relative"
           >
             <span className="absolute font-montserrat -left-6 top-0 text-4xl opacity-10">
@@ -256,12 +203,14 @@ const AboutUs = () => {
           </motion.blockquote>
           <motion.p
             variants={itemVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
             className="mt-3 text-base bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent font-semibold"
           >
             — Usama, Founder & CEO
           </motion.p>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 };

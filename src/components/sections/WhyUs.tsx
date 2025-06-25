@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ImageWithFallback from '../ImageWithFallback';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -173,7 +174,7 @@ export default function WhyMe() {
         >
           <div className="relative p-12">
             <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-200 shadow-lg will-change-transform transition-transform duration-300 hover:scale-[1.02]">
-              <Image
+              <ImageWithFallback
                 src="/WhyUsLogo.jpg"
                 alt="Professional Portrait"
                 fill
