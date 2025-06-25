@@ -26,8 +26,10 @@ export async function readImageDirectory(directoryPath: string): Promise<ImageFi
       ...Array.from({ length: 10 }, (_, i) => `meta ${i + 1}.jpeg`)
     ],
     'Client Reviews': [
-      ...Array.from({ length: 68 }, (_, i) => `(${i + 1}).jpeg`),
-      ...Array.from({ length: 8 }, (_, i) => `Review (${i + 1}).jpeg`)
+      // Top (1)-(9) at the top (priority)
+      ...Array.from({ length: 9 }, (_, i) => `Top (${i + 1}).jpg`),
+      // review (10)-(85) after
+      ...Array.from({ length: 76 }, (_, i) => `review (${i + 10}).jpeg`)
     ]
   };
 
@@ -44,7 +46,8 @@ export async function readImageDirectory(directoryPath: string): Promise<ImageFi
     // Return as-is to preserve manual order
     return images;
   } else if (directoryPath === 'Client Reviews') {
-    return sortClientImages(images);
+    // Return as-is to preserve manual order (Review 1-9, then 10-85)
+    return images;
   }
   return sortImagesByNumber(images);
 }
