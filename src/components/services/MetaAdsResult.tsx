@@ -112,7 +112,7 @@ const MetaAdsResult = () => {
             className="inline-block"
           >
             <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-yellow-500/10 to-yellow-500/20 rounded-full text-yellow-600 text-sm font-lexend font-light mb-4 backdrop-blur-sm border border-yellow-200">
-              Real Results
+              Meta Results
             </span>
           </motion.div>
           

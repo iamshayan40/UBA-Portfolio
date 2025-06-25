@@ -95,7 +95,7 @@ export default function ClientReviewsPage() {
               transition={{ delay: 0.2 }}
               className="text-xl text-gray-600 font-lexend font-light max-w-3xl mx-auto"
             >
-              Browse through our collection of real client reviews and testimonials.
+              Browse through our collection of client reviews and testimonials.
             </motion.p>
           </div>
 

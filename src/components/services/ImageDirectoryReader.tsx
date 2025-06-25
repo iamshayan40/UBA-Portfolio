@@ -1,12 +1,14 @@
 'use server';
 
-import { ImageFile, sortImagesByNumber, sortClientImages, sortSalesProofImages } from '@/lib/utils';
+import { ImageFile, sortImagesByNumber, sortClientImages } from '@/lib/utils';
 
 export async function readImageDirectory(directoryPath: string): Promise<ImageFile[]> {
   // Hardcoded image lists for each directory
   const directories: Record<string, string[]> = {
     'Sales Proofs': [
-      // Top images first (1-9)
+      // Top images first (1-12)
+      ...Array.from({ length: 15 }, (_, i) => `Hot (${i + 1}).jpg`),
+      // Then Top (13-24)
       ...Array.from({ length: 9 }, (_, i) => `Top (${i + 1}).jpg`),
       // Original sales images (1-20)
       ...Array.from({ length: 20 }, (_, i) => `sales (${i + 1}).jpg`),
@@ -39,7 +41,8 @@ export async function readImageDirectory(directoryPath: string): Promise<ImageFi
 
   // Use different sorting functions based on directory
   if (directoryPath === 'Sales Proofs') {
-    return sortSalesProofImages(images);
+    // Return as-is to preserve manual order
+    return images;
   } else if (directoryPath === 'Client Reviews') {
     return sortClientImages(images);
   }

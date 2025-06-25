@@ -9,15 +9,15 @@ import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: [
-    "100","200","300","400","500","600","700","800","900"
-  ],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
 });
+
 const lexend = Lexend({
   subsets: ["latin"],
   variable: "--font-lexend",
 });
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -26,7 +26,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: {
     default: "Usama Bin Amir | Best Digital Marketing & E-commerce Services",
-    template: "%s | Usama Bin Amir Global"
+    template: "%s | Usama Bin Amir Global",
   },
   description:
     "Expert digital marketing, e-commerce, and global business solutions by Usama Bin Amir. Trusted by 100+ clients for Meta Ads, dropshipping, and proven business growth strategies with verifiable results.",
@@ -48,11 +48,11 @@ export const metadata: Metadata = {
     "Digital Business Strategist",
     "Pakistani Digital Marketer",
     "E-commerce Consultant Pakistan",
-    "Meta Ads Expert Pakistan"
+    "Meta Ads Expert Pakistan",
   ],
   metadataBase: new URL("https://usamabinamirglobal.com"),
   alternates: {
-    canonical: "https://usamabinamirglobal.com"
+    canonical: "https://usamabinamirglobal.com",
   },
   robots: {
     index: true,
@@ -60,44 +60,31 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
-    notranslate: true
+    notranslate: true,
   },
   verification: {
-    google: "google-site-verification-code", // Add your Google verification code
-    yandex: "yandex-verification-code", // Optional: Add if targeting Russian market
+    google: "google-site-verification-code",
+    yandex: "yandex-verification-code",
   },
   openGraph: {
     title: "Usama Bin Amir | Expert Digital Marketing & E-commerce Solutions",
-    description: "Transform your business with expert digital marketing and e-commerce solutions. Specializing in Meta Ads, dropshipping, and proven business growth strategies with 100+ satisfied clients.",
+    description:
+      "Transform your business with expert digital marketing and e-commerce solutions. Specializing in Meta Ads, dropshipping, and proven business growth strategies with 100+ satisfied clients.",
     url: "https://usamabinamirglobal.com",
     siteName: "Usama Bin Amir Global",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Usama Bin Amir Global - Digital Marketing & E-commerce Expert"
-      },
-      {
-        url: "/WhyUsLogo.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Why Choose Usama Bin Amir - Digital Marketing Excellence"
-      }
-    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Usama Bin Amir | Digital Marketing & E-commerce Expert",
-    description: "Expert digital marketing & e-commerce solutions. Meta Ads specialist with proven results. Transform your online business today!",
+    description:
+      "Expert digital marketing & e-commerce solutions. Meta Ads specialist with proven results. Transform your online business today!",
     creator: "@usamabinamir",
-    images: ["/logo.png"]
   },
   authors: [{ name: "Usama Bin Amir" }],
   creator: "Usama Bin Amir",
@@ -108,7 +95,7 @@ export const metadata: Metadata = {
     address: true,
     email: true,
     url: true,
-  }
+  },
 };
 
 export default function RootLayout({
@@ -124,7 +111,9 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -140,16 +129,14 @@ export default function RootLayout({
         {/* Prefetch common routes */}
         <link rel="prefetch" href="/team" as="document" />
         <link rel="prefetch" href="/reviews/client-reviews" as="document" />
-        <link rel="prefetch" href="/proof/sales-proof" as="document" />
-        <link rel="prefetch" href="/ads/meta-results" as="document" />
+        <link rel="prefetch" href="/reviews/sales-proofs" as="document" />
+        <link rel="prefetch" href="/reviews/meta-results" as="document" />
       </head>
       <body>
         <Preloader />
         <ClientProvider>
-          <LocomotiveScrollProvider>
-            {children}
-            <ScrollToTop />
-          </LocomotiveScrollProvider>
+          <LocomotiveScrollProvider>{children}</LocomotiveScrollProvider>
+          <ScrollToTop />
         </ClientProvider>
       </body>
     </html>

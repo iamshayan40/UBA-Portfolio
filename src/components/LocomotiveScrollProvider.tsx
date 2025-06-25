@@ -1,9 +1,14 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import LocomotiveScroll from 'locomotive-scroll';
-import 'locomotive-scroll/dist/locomotive-scroll.css';
+
+// Dynamically import LocomotiveScroll only on client
+let LocomotiveScroll: any = null;
+if (typeof window !== 'undefined') {
+  LocomotiveScroll = require('locomotive-scroll').default;
+  require('locomotive-scroll/dist/locomotive-scroll.css');
+}
 
 interface LocomotiveScrollProviderProps {
   children: React.ReactNode;
@@ -15,7 +20,7 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!scrollRef.current) return;
+    if (!scrollRef.current || !LocomotiveScroll) return;
 
     if (locomotiveRef.current) {
       locomotiveRef.current.destroy();
@@ -73,4 +78,4 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
       {children}
     </div>
   );
-} 
+}

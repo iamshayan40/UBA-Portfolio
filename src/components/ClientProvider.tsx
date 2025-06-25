@@ -1,17 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
 export function ClientProvider({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
+  // Always render children, do not block SSR or hydration
   return <>{children}</>;
 }

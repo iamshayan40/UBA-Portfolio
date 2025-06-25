@@ -110,7 +110,7 @@ const SalesProof = () => {
             className="inline-block"
           >
             <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-yellow-500/10 to-yellow-500/20 rounded-full text-yellow-600 text-sm font-lexend font-light mb-4 backdrop-blur-sm border border-yellow-200">
-              Real Sales
+             Sales Proofs
             </span>
           </motion.div>
           
@@ -129,7 +129,7 @@ const SalesProof = () => {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-600 font-lexend font-light max-w-2xl mx-auto"
           >
-            Real sales proofs from satisfied clients.
+            Sales proofs from satisfied clients.
           </motion.p>
         </div>
 

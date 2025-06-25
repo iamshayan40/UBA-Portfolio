@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import AboutUs from "@/components/sections/AboutUs";
@@ -9,6 +10,10 @@ import Services from "@/components/sections/Services";
 import Footer from "@/components/sections/Footer";
 import Announcement from "@/components/ui/Announcement";
 import type { Metadata } from "next";
+
+// ✅ Dynamically load locomotive-sensitive components
+const Certifications = dynamic(() => import("@/components/sections/Certifications"), { ssr: false });
+const ScrollToTop = dynamic(() => import("@/components/ui/ScrollToTop"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Usama Bin Amir",
@@ -44,14 +49,16 @@ export default function HomePage() {
         <Announcement />
         <Navbar />
         <Hero />
+        <Certifications />
         <AboutUs />
         <WhyUs />
         <SalesProof />
         <MetaAdsResult />
         <ClientReview />
         <Services />
-      </main>
       <Footer />
+      <ScrollToTop />
+      </main>
     </>
   );
 }

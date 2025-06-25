@@ -1,33 +1,60 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { scrollToTop } = useSmoothScroll();
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      // Show button when page is scrolled up to given distance
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    let loco: any = null;
+    let lastScrollY = 0;
+
+    // Handler for both window and Locomotive
+    const handleScroll = (obj?: any) => {
+      // Locomotive event: obj.scroll.y, fallback: window.pageYOffset
+      const scrollY =
+        obj && obj.scroll && typeof obj.scroll.y === "number"
+          ? obj.scroll.y
+          : window.pageYOffset || document.documentElement.scrollTop;
+      lastScrollY = scrollY;
+      setIsVisible(scrollY > 300);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    // Listen to window scroll
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Listen to Locomotive scroll if available
+    loco = (window as any).locomotive;
+    if (loco && loco.on) {
+      loco.on("scroll", handleScroll);
+    }
+
+    // If Locomotive is initialized later, listen for it
+    const checkLoco = setInterval(() => {
+      if (!(window as any).locomotive) return;
+      if (loco !== (window as any).locomotive) {
+        if (loco && loco.off) loco.off("scroll", handleScroll);
+        loco = (window as any).locomotive;
+        if (loco && loco.on) loco.on("scroll", handleScroll);
+      }
+    }, 500);
 
     return () => {
-      window.removeEventListener("scroll", toggleVisibility);
+      window.removeEventListener("scroll", handleScroll);
+      if (loco && loco.off) loco.off("scroll", handleScroll);
+      clearInterval(checkLoco);
     };
   }, []);
 
   const scrollToTopHandler = () => {
-    scrollToTop(1.5); // 1.5 seconds duration
+    const loco = (window as any).locomotive;
+    if (loco && loco.scrollTo) {
+      loco.scrollTo(0, { duration: 1200, disableLerp: false });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
