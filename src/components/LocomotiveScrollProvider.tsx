@@ -25,23 +25,20 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
     if (locomotiveRef.current) {
       locomotiveRef.current.destroy();
     }
-
     locomotiveRef.current = new LocomotiveScroll({
       el: scrollRef.current,
       smooth: true,
-      smoothMobile: true,
-      lerp: 0.07,
-      multiplier: 1.1,
-      touchMultiplier: 2,
+      lerp: 0.02, // higher lerp for more responsive inertia
+      multiplier: 2.2, // much faster scroll for desktop
       smartphone: {
         smooth: true,
-        lerp: 0.07,
-        multiplier: 1.1,
+        lerp: 0.18, // very responsive for touch
+        // multiplier: 3.2, // much faster scroll for mobile
       },
       tablet: {
         smooth: true,
-        lerp: 0.07,
-        multiplier: 1.1,
+        lerp: 0.15,
+        multiplier: 2.5,
       },
     });
 
