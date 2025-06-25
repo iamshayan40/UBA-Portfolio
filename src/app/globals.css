@@ -116,6 +116,12 @@
   }
 }
 
+html, body {
+  scroll-behavior: auto !important;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+}
+
 /* Locomotive Scroll Optimizations */
 html.has-scroll-smooth {
   overflow: hidden;

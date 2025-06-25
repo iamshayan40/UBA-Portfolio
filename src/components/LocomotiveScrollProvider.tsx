@@ -25,22 +25,32 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
     if (locomotiveRef.current) {
       locomotiveRef.current.destroy();
     }
-    locomotiveRef.current = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-      lerp: 0.02, // higher lerp for more responsive inertia
-      multiplier: 2.2, // much faster scroll for desktop
-      smartphone: {
-        smooth: true,
-        lerp: 0.18, // very responsive for touch
-        // multiplier: 3.2, // much faster scroll for mobile
-      },
-      tablet: {
-        smooth: true,
-        lerp: 0.15,
-        multiplier: 2.5,
-      },
-    });
+   locomotiveRef.current = new LocomotiveScroll({
+  el: scrollRef.current,
+  smooth: true,
+
+  // ✅ DESKTOP
+  lerp: 0.07,             // natural smoothness
+  multiplier: 1.6,        // decent scroll distance
+  touchMultiplier: 2.5,   // trackpad/mobile boost
+
+  // ✅ SMARTPHONE
+  smartphone: {
+    smooth: true,
+    lerp: 0.07,           // buttery without lag
+    multiplier: 2.5,      // enough jump
+    touchMultiplier: 3.5, // nice swipe feel
+    breakpoint: 768,
+  },
+
+  // ✅ TABLET
+  tablet: {
+    smooth: true,
+    lerp: 0.075,
+    multiplier: 2.0,
+  },
+});
+
 
     (window as any).locomotive = locomotiveRef.current;
 
