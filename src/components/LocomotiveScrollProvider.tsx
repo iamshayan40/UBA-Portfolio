@@ -28,16 +28,16 @@ export default function LocomotiveScrollProvider({ children }: LocomotiveScrollP
    locomotiveRef.current = new LocomotiveScroll({
       el: scrollRef.current,
       smooth: true,
-      lerp: 0.09, // more direct, less inertia for desktop
-      multiplier: 1.7, // still fast, but not too floaty
+      lerp: 0.09, // more jammed, less inertia for desktop
+      multiplier: 1.2, // more controlled for desktop
       touchMultiplier: 2.2,
       resetNativeScroll: true,
       scrollFromAnywhere: true,
       getDirection: true,
       smartphone: {
         smooth: true,
-        lerp: 0.035, // ultra responsive for mobile (unchanged)
-        multiplier: 5, // extremely fast movement per swipe (unchanged)
+        lerp: 0.035, // ultra smooth for mobile
+        multiplier: 5.5, // very fast per swipe for mobile
         resetNativeScroll: true,
         scrollFromAnywhere: true,
         getDirection: true,
