@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
 import { readImageDirectory } from '@/components/services/ImageDirectoryReader';
-import { ImageFile, sortClientImages } from '@/lib/utils';
+import { ImageFile } from '@/lib/utils';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -20,8 +20,8 @@ export default function ClientReviewsPage() {
   useEffect(() => {
     const loadImages = async () => {
       const clientImages = await readImageDirectory('Client Reviews');
-      // Sort images to ensure top reviews come first
-      setImages(sortClientImages(clientImages));
+      // Do NOT sort, just use as-is to preserve manual order from directory reader
+      setImages(clientImages);
       setMounted(true);
     };
     loadImages();

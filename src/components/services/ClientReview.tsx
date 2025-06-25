@@ -198,21 +198,29 @@ const ClientReview = () => {
 
           {/* Optimized Pagination */}
           <div className="flex justify-center items-center mt-8 gap-3">
-            {[0, Math.floor((totalPages - 1) / 2), totalPages - 1].map((index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setIsAutoPlaying(false);
-                  setCurrentPage(index);
-                }}
-                className={`transition-all duration-300 ${
-                  currentPage === index
-                    ? 'w-3 h-3 bg-yellow-400 rounded-full transform scale-110 shadow-md'
-                    : 'w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+            {(() => {
+              let dots = [];
+              let start = Math.max(0, currentPage - 1);
+              let end = Math.min(totalPages - 1, currentPage + 1);
+              for (let i = start; i <= end; i++) {
+                dots.push(
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setIsAutoPlaying(false);
+                      setCurrentPage(i);
+                    }}
+                    className={`transition-all duration-300 ${
+                      currentPage === i
+                        ? 'w-3 h-3 bg-yellow-400 rounded-full transform scale-110 shadow-md'
+                        : 'w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                );
+              }
+              return dots;
+            })()}
           </div>
         </div>
 

@@ -6,12 +6,10 @@ export async function readImageDirectory(directoryPath: string): Promise<ImageFi
   // Hardcoded image lists for each directory
   const directories: Record<string, string[]> = {
     'Sales Proofs': [
-      // Top images first (1-12)
-      ...Array.from({ length: 15 }, (_, i) => `Hot (${i + 1}).jpg`),
-      // Then Top (13-24)
+      // Hot (1)-Hot (13) at the top (priority)
+      ...Array.from({ length: 13 }, (_, i) => `priority (${i + 1}).jpg`),
+      // Top (1)-Top (9) after
       ...Array.from({ length: 9 }, (_, i) => `Top (${i + 1}).jpg`),
-      // Original sales images (1-20)
-      ...Array.from({ length: 20 }, (_, i) => `sales (${i + 1}).jpg`),
       // Sales 4 images (1-74)
       ...Array.from({ length: 74 }, (_, i) => `sales 4 (${i + 1}).jpg`),
       // Sales 3 images (1-92)
@@ -20,6 +18,8 @@ export async function readImageDirectory(directoryPath: string): Promise<ImageFi
       ...Array.from({ length: 74 }, (_, i) => `sales 2 (${i + 1}).jpg`),
       // Sales 1 images (1-61)
       ...Array.from({ length: 61 }, (_, i) => `sales 1 (${i + 1}).jpg`),
+      // Original sales images (1-20)
+      ...Array.from({ length: 20 }, (_, i) => `sales (${i + 1}).jpg`),
     ],
     'Meta Ads Results': [
       ...Array.from({ length: 30 }, (_, i) => `(${i + 1}).jpg`),

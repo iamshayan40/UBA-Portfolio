@@ -56,8 +56,8 @@ export default function HomePage() {
         <MetaAdsResult />
         <ClientReview />
         <Services />
-      <Footer />
       <ScrollToTop />
+      <Footer />
       </main>
     </>
   );

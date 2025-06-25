@@ -15,13 +15,14 @@ export const getImageNumberFromFilename = (filename: string): number => {
 };
 
 const getSalesProofPriority = (filename: string): number => {
-  if (filename.includes('Top')) return 0;
-  if (filename.match(/sales \(/)) return 1;
+  if (filename.includes('priority')) return 0;
+  if (filename.includes('Top')) return 1;
   if (filename.match(/sales 4 \(/)) return 2;
   if (filename.match(/sales 3 \(/)) return 3;
   if (filename.match(/sales 2 \(/)) return 4;
   if (filename.match(/sales 1 \(/)) return 5;
-  return 6;
+  if (filename.match(/sales \(/)) return 6;
+  return 7;
 };
 
 export const sortImagesByNumber = (images: ImageFile[]): ImageFile[] => {
@@ -69,7 +70,7 @@ export const sortSalesProofImages = (images: ImageFile[]): ImageFile[] => {
     const aName = a.image.split('/').pop() || '';
     const bName = b.image.split('/').pop() || '';
 
-    // First sort by priority (Top, sales, sales 4, sales 3, sales 2, sales 1)
+    // First sort by priority (Hot, Top, sales 4, sales 3, sales 2, sales 1)
     const aPriority = getSalesProofPriority(aName);
     const bPriority = getSalesProofPriority(bName);
     
